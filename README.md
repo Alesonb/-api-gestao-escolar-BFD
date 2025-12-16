@@ -8,7 +8,12 @@ Este projeto consiste em uma API REST para gerenciamento de Alunos, Cursos e Mat
 No terminal, execute:
 ```bash
 npm install
+Para criar as tabelas no banco de dados:
 
+Bash
+npx sequelize-cli db:migrate
+
+2. Rodar as Migrations
 Para criar as tabelas no banco de dados:
 
 Bash
