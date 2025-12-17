@@ -32,12 +32,16 @@ GET /alunos/:id -> Detalha um aluno e seus cursos matriculados.
 
 POST /alunos -> Cria um novo aluno.
 
+DELETE /alunos/:id -> Remove um aluno específico.
+
 Cursos
 GET /cursos -> Lista todos os cursos.
 
 GET /cursos/:id -> Detalha um curso e seus alunos matriculados.
 
 POST /cursos -> Cria um novo curso.
+
+DELETE /curso/:id -> Remove um curso específico.
 
 Matrículas (Relacionamento)
 POST /matriculas -> Liga um aluno a um curso.
