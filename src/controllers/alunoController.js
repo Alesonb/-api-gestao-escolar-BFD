@@ -5,8 +5,8 @@ module.exports = {
         try {
             const alunos = await Aluno.findAll();
             return res.status(200).json(alunos);
-        }   catch (error) {
-            return res.status(500).json({erro: error.message});
+        }   catch (e) {
+            return res.status(500).json({e: error.message});
         }
     },
 
@@ -17,8 +17,8 @@ module.exports = {
             });
             if (!aluno) return res.status(404).json({mensagem: "Aluno não encontrado"});
             return res.status(200).json(aluno);
-        }   catch (error) {
-            return res.status(500).json({erro: error.message});
+        }   catch (e) {
+            return res.status(500).json({erro: e.message});
         }
     },
 
@@ -26,8 +26,8 @@ module.exports = {
         try {
             const novoAluno = await Aluno.create(req.body); // req.body deve ter nome e email
             return res.status(201).json(novoAluno)
-        }   catch (error) {
-            return res.status(400).json({erro: error.message});
+        }   catch (e) {
+            return res.status(400).json({e: error.message});
         }
     },
 
@@ -41,8 +41,8 @@ module.exports = {
                 return res.status(200).json(alunoAtualizado);
             }
             return res.status(404).json({mensagem: "Aluno não encontrado"});
-        }   catch (error) {
-            return res.status(500).json({erro: error.message});
+        }   catch (e) {
+            return res.status(500).json({erro: e.message});
         }
     },
 
@@ -53,8 +53,8 @@ module.exports = {
             });
             if (excluido) return res.status(204).send();
             return res.status(404).json({mensagem: "Aluno não encontrado"});
-        }   catch (error) {
-            return res.status(500).json({erro: error.message});
+        }   catch (e) {
+            return res.status(500).json({erro: e.message});
         }
     }
 };

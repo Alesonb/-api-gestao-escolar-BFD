@@ -44,8 +44,8 @@ module.exports = {
 
             if (!matricula) return res.status(404).json({mensagem: "Matrícula não encontrada"})
             return res.status(200).json(matricula);
-        }   catch (error) {
-            return res.status(500).json({erro: error.message});
+        }   catch (e) {
+            return res.status(500).json({erro: e.message});
         }
     },
 
@@ -61,18 +61,29 @@ module.exports = {
                 return res.status(200).json(matriculaAtualizada);
             }
             return res.status(400).json({mensagem: "Matrícula não encontrada"});
-        }  catch (error) {
-            return res.status(500).json({erro: error.message});
+        }  catch (e) {
+            return res.status(500).json({erro: e.message});
         }
     },
 
     async excluir(req, res) {
-        try {
-            const excluido = await Matricula.destroy({where: {id: req.params.id}});
-            if (excluido) return res.status(204).send();
-            return res.status(404).json({mensagem: "Matrícula não encontrada"});
-        }   catch (error) {
-            return res.status(500).json({erro: error.message});
+    try {
+        const { alunoId, cursoId } = req.body; // Pega os IDs enviados pelo Postman
+
+        const resultado = await Matricula.destroy({
+            where: {
+                alunoId: alunoId,
+                cursoId: cursoId
+            }
+        });
+
+        if (resultado > 0) {
+            return res.status(204).send(); // Sucesso, sem conteúdo
+        } else {
+            return res.status(404).json({ mensagem: "Matrícula não encontrada" });
         }
+    } catch (e) {
+        return res.status(500).json({ erro: e.message });
     }
+}
 }
