@@ -41,7 +41,7 @@ GET /cursos/:id -> Detalha um curso e seus alunos matriculados.
 
 POST /cursos -> Cria um novo curso.
 
-DELETE /curso/:id -> Remove um curso específico.
+DELETE /cursos/:id -> Remove um curso específico.
 
 Matrículas (Relacionamento)
 POST /matriculas -> Liga um aluno a um curso.
